@@ -11,22 +11,41 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
-// Guardar historial de conversaciones por sesión
 const conversations = new Map();
 
-// Función para obtener configuración del cliente
+// Función mejorada para obtener configuración del cliente
 function getClientConfig(clientId) {
   try {
-    const data = fs.readFileSync('clients.json', 'utf8');
-    const clients = JSON.parse(data);
-    return clients[clientId] || clients.demo;
+    const possiblePaths = [
+      path.join(__dirname, 'clients.json'),
+      path.join(process.cwd(), 'clients.json'),
+      './clients.json'
+    ];
+    
+    let clientsData;
+    for (const filePath of possiblePaths) {
+      try {
+        const data = fs.readFileSync(filePath, 'utf8');
+        clientsData = JSON.parse(data);
+        console.log(`✅ clients.json loaded from: ${filePath}`);
+        break;
+      } catch (err) {
+        continue;
+      }
+    }
+    
+    if (!clientsData) {
+      console.error('❌ clients.json not found');
+      return null;
+    }
+    
+    return clientsData[clientId] || clientsData.demo;
   } catch (error) {
-    console.error('Error reading clients.json:', error);
+    console.error('❌ Error reading clients.json:', error);
     return null;
   }
 }
 
-// Endpoint: Obtener configuración del cliente
 app.get('/api/config/:clientId', (req, res) => {
   const { clientId } = req.params;
   const config = getClientConfig(clientId);
@@ -38,7 +57,6 @@ app.get('/api/config/:clientId', (req, res) => {
   }
 });
 
-// Endpoint: Chat con OpenAI con historial
 app.post('/api/chat', async (req, res) => {
   const { message, clientId, sessionId } = req.body;
   
@@ -57,23 +75,19 @@ app.post('/api/chat', async (req, res) => {
       throw new Error('OPENAI_API_KEY no configurada');
     }
 
-    // Crear ID de sesión único (o usar el provisto)
     const conversationId = sessionId || `${clientId}-${Date.now()}`;
     
-    // Obtener historial de la conversación
     if (!conversations.has(conversationId)) {
       conversations.set(conversationId, []);
     }
     
     const history = conversations.get(conversationId);
     
-    // Agregar mensaje del usuario al historial
     history.push({
       role: 'user',
       content: message
     });
 
-    // Construir mensajes para OpenAI
     const messages = [
       {
         role: 'system',
@@ -82,7 +96,6 @@ app.post('/api/chat', async (req, res) => {
       ...history
     ];
 
-    // Llamar a OpenAI
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -104,13 +117,11 @@ app.post('/api/chat', async (req, res) => {
     const data = await response.json();
     const botResponse = data.choices[0].message.content;
 
-    // Agregar respuesta del bot al historial
     history.push({
       role: 'assistant',
       content: botResponse
     });
 
-    // Limitar historial a últimos 20 mensajes
     if (history.length > 20) {
       history.splice(0, history.length - 20);
     }
@@ -129,18 +140,15 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-// Endpoint: Admin panel
 app.get('/admin', (req, res) => {
   res.send('<h1>Panel Admin - Próximamente</h1>');
 });
 
-// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ ChatEch Widget API running on http://localhost:${PORT}`);
   console.log(`🔑 OpenAI: ${process.env.OPENAI_API_KEY ? 'Configurada ✅' : 'NO configurada ❌'}`);
 });
 
-// Auto-scraper
 const { exec } = require('child_process');
 
 function runScraper() {
