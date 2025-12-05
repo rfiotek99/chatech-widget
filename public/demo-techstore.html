@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo TechStore - ChatEch Widget</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #00D2D3, #1dd1a1); min-height: 100vh; display: flex; align-items: center; justify-content: center; color: white; }
+    .container { text-align: center; max-width: 600px; padding: 40px; }
+    h1 { font-size: 48px; margin-bottom: 20px; }
+    p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
+    .features { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 16px; backdrop-filter: blur(10px); }
+    .features h2 { margin-bottom: 20px; }
+    .features ul { text-align: left; list-style: none; }
+    .features li { padding: 10px 0; }
+    .features li:before { content: "✓ "; color: #fff; font-weight: bold; margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📱 TechStore</h1>
+    <p>Gadgets y tecnología premium</p>
+    <div class="features">
+      <h2>Probá el asistente virtual</h2>
+      <ul>
+        <li>Recomendaciones personalizadas</li>
+        <li>Comparativas de gadgets</li>
+        <li>Mejores ofertas</li>
+        <li>Reviews y opiniones</li>
+      </ul>
+      <p style="margin-top: 20px; font-size: 14px;">👉 Hacé click en el botón de abajo a la derecha</p>
+    </div>
+  </div>
+
+  <script src="http://localhost:3000/widget.js" data-client="techstore"></script>
+</body>
+</html>

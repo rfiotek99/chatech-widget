@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Cousins SNKRS - ChatEch Widget</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #ff6b00 100%); 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: white; 
+    }
+    .container { text-align: center; max-width: 700px; padding: 40px; }
+    h1 { 
+      font-size: 56px; 
+      margin-bottom: 10px; 
+      background: linear-gradient(90deg, #fff 0%, #ff6b00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+    .subtitle {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+    .features { 
+      background: rgba(255,255,255,0.05); 
+      padding: 40px; 
+      border-radius: 20px; 
+      backdrop-filter: blur(10px); 
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .features h2 { 
+      margin-bottom: 24px; 
+      font-size: 24px;
+      color: #ff6b00;
+    }
+    .features ul { 
+      text-align: left; 
+      list-style: none; 
+      display: grid;
+      gap: 14px;
+    }
+    .features li { 
+      padding: 12px 16px; 
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      border-left: 3px solid #ff6b00;
+    }
+    .features li:before { 
+      content: "🏀 "; 
+      margin-right: 10px; 
+    }
+    .cta {
+      margin-top: 30px;
+      padding: 16px 32px;
+      background: #ff6b00;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 107, 0, 0.4);
+      transition: all 0.3s;
+    }
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255, 107, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏀 COUSINS SNKRS</h1>
+    <div class="subtitle">Sneakers Exclusivos</div>
+    <div class="features">
+      <h2>Probá nuestro Asistente Virtual</h2>
+      <ul>
+        <li>Consultá stock de Nike, Adidas, Jordan, Yeezy</li>
+        <li>Verificá autenticidad de productos</li>
+        <li>Reservá drops exclusivos</li>
+        <li>Seguimiento de pedidos</li>
+        <li>Recomendaciones personalizadas</li>
+      </ul>
+      <button class="cta" onclick="document.getElementById('chatech-button').click()">
+        Chateá con nosotros 🏀
+      </button>
+      <p style="margin-top: 20px; font-size: 13px; opacity: 0.6;">👉 O hacé click en el botón de abajo a la derecha</p>
+    </div>
+  </div>
+
+  <script src="http://localhost:3000/widget.js" data-client="cousinssnkrs"></script>
+</body>
+</html>

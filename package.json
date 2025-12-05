@@ -1,0 +1,25 @@
+{
+  "name": "chatech-widget",
+  "version": "2.0.0",
+  "description": "ChatEch - AI Widget for E-commerce",
+  "main": "server.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "scraper": "node scraper.js"
+  },
+  "keywords": ["chatbot", "ai", "ecommerce", "widget", "openai"],
+  "author": "Ramiro",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3"
+  }
+}

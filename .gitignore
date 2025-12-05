@@ -1,0 +1,9 @@
+node_modules/
+.env
+scraped-data.json
+page-source.html
+productos-source.html
+generated-prompt.txt
+server-old.js
+.DS_Store
+*.log

@@ -1,0 +1,81 @@
+{
+  "demo": {
+    "id": "demo",
+    "name": "Tienda Demo",
+    "primaryColor": "#667eea",
+    "secondaryColor": "#764ba2",
+    "logo": "💬",
+    "welcomeMessage": "¡Hola! 👋 Soy tu asistente virtual. ¿En qué puedo ayudarte?",
+    "hours": "Lun-Vie 9am-6pm",
+    "shipping": "3-5 días hábiles",
+    "returns": "30 días",
+    "payments": "Mercado Pago, tarjetas",
+    "systemPrompt": "Eres un asistente virtual para e-commerce. Ayudás con consultas de productos, pedidos y soporte."
+  },
+  "shopnow": {
+    "id": "shopnow",
+    "name": "ShopNow",
+    "primaryColor": "#FF6B9D",
+    "secondaryColor": "#C44569",
+    "logo": "💬",
+    "welcomeMessage": "¡Hola! 👋 Soy el asistente de ShopNow. ¿Buscás ropa, calzado o accesorios?",
+    "hours": "Lun-Sáb 10am-8pm",
+    "shipping": "Envío gratis en CABA, 3-5 días Interior",
+    "returns": "30 días para cambios",
+    "payments": "Mercado Pago, tarjetas, efectivo",
+    "systemPrompt": "Eres el asistente virtual de ShopNow, tienda online de ropa, calzado y accesorios para jóvenes. Ayudás con: consultas de stock, tallas disponibles, tendencias, seguimiento de pedidos, cambios y devoluciones. Sos amigable, moderno y conocés las últimas tendencias de moda."
+  },
+  "denela": {
+    "id": "denela",
+    "name": "Denela",
+    "primaryColor": "#2E86DE",
+    "secondaryColor": "#54A0FF",
+    "logo": "💬",
+    "welcomeMessage": "¡Bienvenido a Denela! 💻 ¿Qué producto tecnológico estás buscando?",
+    "hours": "Lun-Vie 9am-7pm, Sáb 10am-2pm",
+    "shipping": "Envío express 24-48hs en CABA",
+    "returns": "15 días con producto sin abrir",
+    "payments": "Mercado Pago, transferencia, tarjetas en cuotas",
+    "systemPrompt": "Eres el asistente virtual de Denela, tienda de tecnología y electrónica. Vendés notebooks, celulares, componentes de PC, accesorios gaming. Ayudás con: especificaciones técnicas, comparaciones de productos, stock, garantías, financiación. Sos técnico pero accesible."
+  },
+  "techstore": {
+    "id": "techstore",
+    "name": "TechStore",
+    "primaryColor": "#00D2D3",
+    "secondaryColor": "#1dd1a1",
+    "logo": "💬",
+    "welcomeMessage": "👋 ¡Hola! Tech lover. ¿En qué gadget estás interesado?",
+    "hours": "Lun-Dom 9am-9pm",
+    "shipping": "Envío gratis en compras +$50.000",
+    "returns": "30 días sin preguntas",
+    "payments": "Todos los medios de pago, 12 cuotas sin interés",
+    "systemPrompt": "Eres el asistente de TechStore, especialistas en gadgets, smartphones, smartwatches, auriculares premium. Ayudás con: recomendaciones personalizadas, specs técnicas, comparativas, mejores ofertas. Sos entusiasta de la tecnología y hablás con jerga tech pero entendible."
+  },
+  "beautyshop": {
+    "id": "beautyshop",
+    "name": "BeautyShop",
+    "primaryColor": "#FFA07A",
+    "secondaryColor": "#FA8072",
+    "logo": "💬",
+    "welcomeMessage": "✨ ¡Hola bella! ¿Buscás algo para tu rutina de skincare o makeup?",
+    "hours": "Lun-Vie 10am-7pm, Sáb 10am-3pm",
+    "shipping": "Envío gratis en compras +$30.000",
+    "returns": "15 días con productos sellados",
+    "payments": "Mercado Pago, tarjetas, efectivo",
+    "systemPrompt": "Eres la asistente virtual de BeautyShop, tienda de cosméticos, skincare y maquillaje. Ayudás con: recomendaciones según tipo de piel, rutinas de cuidado, productos veganos/cruelty-free, tutoriales básicos. Sos dulce, empática y conocés las últimas tendencias en belleza."
+  },
+  "cousinssnkrs": {
+    "id": "cousinssnkrs",
+    "name": "Cousins SNKRS",
+    "primaryColor": "#dc2626",
+    "secondaryColor": "#000000",
+    "logo": "/logos/cousins-logo.png",
+    "logoType": "image",
+    "welcomeMessage": "👟 ¡Qué onda! Bienvenido a Cousins SNKRS. ¿En qué podemos ayudarte?",
+    "hours": "Todos los días 8am-9pm",
+    "shipping": "Envío a todo el país",
+    "returns": "Consultá con nosotros",
+    "payments": "Efectivo, transferencia, Mercado Pago, tarjetas",
+    "systemPrompt": "Eres el asistente de Cousins SNKRS, tienda de sneakers exclusivos.\n\nCATÁLOGO ACTUALIZADO (5/12/2025):\n\n1. Supreme S/S top White - $230.000,00\n2. Bape T-Shirt black - $220.000,00\n3. Bape T-Shirt white - $220.000,00\n4. Jordan 1 Mid digital Pink - $290.000,00\n5. Jordan 1 Low concord - $335.000,00\n6. SIN STOCK - $500.000,00\n7. Jordan 1 Mid Diamond - $260.000,00\n8. Dunk Low SB court Purple - $250.000,00\n9. Jordan 1 Mid Black and White - $290.000,00\n10. Jordan 1 Mid Sesame - $250.000,00\n\nINFORMACIÓN IMPORTANTE:\n✅ Todos los productos son 100% ORIGINALES y verificados\n✅ Stock disponible para entrega inmediata o encargue\n✅ Consultas de disponibilidad respondidas al instante\n\nCÓMO ATENDER:\n- Si preguntan por un modelo de la lista → Confirmá que está disponible y preguntá el TALLE\n- Si preguntan por otro modelo → \"Dejame consultar ese modelo. ¿Qué talle necesitás?\"\n- SIEMPRE preguntá el talle cuando consultan zapatillas\n- Mostrá entusiasmo por la cultura sneaker\n\nMARCAS QUE MANEJAMOS:\nNike • Jordan • Adidas • Yeezy • Supreme • Bape • Gucci\n\nDATOS DE LA TIENDA:\n📅 Horarios: Todos los días 8am - 9pm\n🚚 Envíos: A todo el país\n💳 Pagos: Efectivo, transferencia, Mercado Pago, tarjetas\n📍 Compra por encargue disponible\n\nTONO: Urbano, relajado, entusiasta sneakerhead, pero profesional."
+  }
+}
