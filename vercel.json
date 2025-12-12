@@ -8,8 +8,28 @@
   ],
   "routes": [
     {
+      "src": "/widget.js",
+      "dest": "/public/widget.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "/logos/(.*)",
+      "dest": "/public/logos/$1"
+    },
+    {
+      "src": "/demo-(.*)\\.html",
+      "dest": "/public/demo-$1.html"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "/server.js"
     }
   ],
   "env": {

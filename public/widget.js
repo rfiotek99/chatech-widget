@@ -1,19 +1,39 @@
 (function() {
+  // Prevent multiple initializations
+  if (window.ChatEchInitialized) return;
+  window.ChatEchInitialized = true;
+
   const script = document.currentScript;
   const clientId = script.getAttribute('data-client') || 'demo';
-  const apiUrl = script.getAttribute('data-api') || 'http://localhost:3000';
+  // Default to production URL, fallback to localhost for development
+  const apiUrl = script.getAttribute('data-api') || 'https://chatech-widget.vercel.app';
 
   let config = null;
   let isOpen = false;
-  let sessionId = null; // ID único de sesión
+  let sessionId = localStorage.getItem(`chatech_session_${clientId}`) || null;
+  let isLoading = false;
 
-  fetch(`${apiUrl}/api/config/${clientId}`)
-    .then(res => res.json())
-    .then(data => {
-      config = data;
-      initWidget();
-    })
-    .catch(err => console.error('Error loading ChatEch config:', err));
+  // Load config with retry
+  function loadConfig(retries = 3) {
+    fetch(`${apiUrl}/api/config/${clientId}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (data.error) throw new Error(data.error);
+        config = data;
+        initWidget();
+      })
+      .catch(err => {
+        console.error('ChatEch: Error loading config:', err);
+        if (retries > 0) {
+          setTimeout(() => loadConfig(retries - 1), 2000);
+        }
+      });
+  }
+
+  loadConfig();
 
   function initWidget() {
     const style = document.createElement('style');
@@ -53,6 +73,23 @@
       #chatech-input:focus {
         border-color: ${config.primaryColor} !important;
         box-shadow: 0 0 0 3px ${config.primaryColor}20 !important;
+      }
+      /* Mobile responsive */
+      @media (max-width: 480px) {
+        #chatech-window {
+          width: calc(100vw - 20px) !important;
+          height: calc(100vh - 100px) !important;
+          max-height: calc(100vh - 100px) !important;
+          right: 10px !important;
+          bottom: 80px !important;
+          border-radius: 16px !important;
+        }
+        #chatech-button {
+          width: 56px !important;
+          height: 56px !important;
+          right: 16px !important;
+          bottom: 16px !important;
+        }
       }
     `;
     document.head.appendChild(style);
@@ -224,12 +261,14 @@
   function sendMessage() {
     const input = document.getElementById('chatech-input');
     const message = input.value.trim();
-    if (!message) return;
+    if (!message || isLoading) return;
 
+    isLoading = true;
     addMessage('user', message);
     input.value = '';
 
     document.getElementById('chatech-typing').style.display = 'block';
+    document.getElementById('chatech-send').disabled = true;
 
     fetch(`${apiUrl}/api/chat`, {
       method: 'POST',
@@ -237,27 +276,42 @@
       body: JSON.stringify({ 
         message, 
         clientId,
-        sessionId // Enviar ID de sesión
+        sessionId,
+        pageUrl: window.location.href
       })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then(data => {
         document.getElementById('chatech-typing').style.display = 'none';
+        document.getElementById('chatech-send').disabled = false;
+        isLoading = false;
         
         if (data.botResponse) {
-          // Guardar sessionId para próximas llamadas
+          // Persist sessionId to localStorage
           if (data.sessionId) {
             sessionId = data.sessionId;
+            try {
+              localStorage.setItem(`chatech_session_${clientId}`, sessionId);
+            } catch (e) {
+              // localStorage might not be available
+            }
           }
           
           setTimeout(() => {
             addMessage('bot', data.botResponse);
           }, 300);
+        } else if (data.error) {
+          addMessage('bot', data.error);
         }
       })
       .catch(err => {
         document.getElementById('chatech-typing').style.display = 'none';
-        addMessage('bot', 'Lo siento, hubo un error. Por favor intenta de nuevo.');
+        document.getElementById('chatech-send').disabled = false;
+        isLoading = false;
+        addMessage('bot', 'Lo siento, hubo un error de conexión. Por favor intenta de nuevo.');
         console.error('ChatEch error:', err);
       });
   }
