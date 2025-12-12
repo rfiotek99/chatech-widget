@@ -4,24 +4,28 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/widget.js",
-      "dest": "/public/widget.js",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "public, max-age=3600"
-      }
+      "dest": "/public/widget.js"
+    },
+    {
+      "src": "/demo-(.*)",
+      "dest": "/public/demo-$1"
+    },
+    {
+      "src": "/landing.html",
+      "dest": "/public/landing.html"
     },
     {
       "src": "/logos/(.*)",
       "dest": "/public/logos/$1"
-    },
-    {
-      "src": "/demo-(.*)\\.html",
-      "dest": "/public/demo-$1.html"
     },
     {
       "src": "/api/(.*)",
@@ -31,8 +35,5 @@
       "src": "/(.*)",
       "dest": "/server.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
