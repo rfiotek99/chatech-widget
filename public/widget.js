@@ -12,6 +12,7 @@
   let isLoading = false;
   let isDragging = false;
   let dragOffset = { x: 0, y: 0 };
+  let buttonPos = { right: 24, bottom: 24 };
 
   function loadConfig(retries = 3) {
     fetch(`${apiUrl}/api/config/${clientId}`)
@@ -80,15 +81,15 @@
       @media (max-width: 480px) {
         #chatech-window {
           width: calc(100vw - 20px) !important;
-          height: calc(100vh - 100px) !important;
-          max-height: calc(100vh - 100px) !important;
+          height: 400px !important;
+          max-height: 400px !important;
           right: 10px !important;
           bottom: 90px !important;
           border-radius: 16px !important;
         }
         #chatech-button {
-          width: 70px !important;
-          height: 70px !important;
+          width: 65px !important;
+          height: 65px !important;
         }
       }
     `;
@@ -96,7 +97,7 @@
 
     let buttonContent;
     if (config.logoType === 'image') {
-      buttonContent = `<img src="${config.logo}" style="width: 65px; height: 65px; object-fit: cover; border-radius: 50%;" alt="Logo">`;
+      buttonContent = `<img src="${config.logo}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;" alt="Logo">`;
     } else {
       buttonContent = config.logo || '💬';
     }
@@ -106,14 +107,14 @@
     button.innerHTML = buttonContent;
     button.style.cssText = `
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 80px;
-      height: 80px;
+      bottom: ${buttonPos.bottom}px;
+      right: ${buttonPos.right}px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       background: ${config.logoType === 'image' ? 'transparent' : `linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%)`};
       color: white;
-      font-size: 40px;
+      font-size: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -125,7 +126,6 @@
       user-select: none;
     `;
 
-    // Drag functionality
     button.addEventListener('mousedown', startDrag);
     button.addEventListener('touchstart', startDrag, { passive: false });
 
@@ -159,6 +159,8 @@
       
       button.style.right = newX + 'px';
       button.style.bottom = newY + 'px';
+      buttonPos.right = newX;
+      buttonPos.bottom = newY;
     }
 
     function stopDrag() {
@@ -183,12 +185,12 @@
       position: absolute;
       top: -4px;
       right: -4px;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: #ef4444;
       color: white;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       display: none;
       align-items: center;
@@ -200,22 +202,22 @@
 
     let headerLogoContent;
     if (config.logoType === 'image') {
-      headerLogoContent = `<img src="${config.logo}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 50%;" alt="Logo">`;
+      headerLogoContent = `<img src="${config.logo}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%;" alt="Logo">`;
     } else {
-      headerLogoContent = `<div style="font-size: 32px;">${config.logo || '💬'}</div>`;
+      headerLogoContent = `<div style="font-size: 28px;">${config.logo || '💬'}</div>`;
     }
 
     const chatWindow = document.createElement('div');
     chatWindow.id = 'chatech-window';
     chatWindow.style.cssText = `
       position: fixed;
-      bottom: 115px;
-      right: 24px;
-      width: 420px;
-      height: 650px;
-      max-height: calc(100vh - 140px);
+      bottom: ${buttonPos.bottom + 80}px;
+      right: ${buttonPos.right}px;
+      width: 350px;
+      height: 450px;
+      max-height: calc(100vh - 120px);
       background: white;
-      border-radius: 20px;
+      border-radius: 16px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.1);
       z-index: 9999;
       display: none;
@@ -226,35 +228,35 @@
     `;
 
     chatWindow.innerHTML = `
-      <div style="background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%); color: white; padding: 24px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div style="flex: 1; display: flex; align-items: center; gap: 14px;">
+      <div style="background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%); color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div style="flex: 1; display: flex; align-items: center; gap: 10px;">
           ${headerLogoContent}
           <div>
-            <h3 style="margin: 0 0 4px 0; font-size: 20px; font-weight: 600; letter-spacing: -0.3px;">${config.name}</h3>
-            <div style="display: flex; align-items: center; gap: 6px; opacity: 0.95;">
-              <div style="width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);"></div>
-              <small style="font-size: 14px; font-weight: 500;">En línea</small>
+            <h3 style="margin: 0 0 2px 0; font-size: 16px; font-weight: 600; letter-spacing: -0.3px;">${config.name}</h3>
+            <div style="display: flex; align-items: center; gap: 5px; opacity: 0.95;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);"></div>
+              <small style="font-size: 12px; font-weight: 500;">En línea</small>
             </div>
           </div>
         </div>
-        <button id="chatech-close" style="background: rgba(255,255,255,0.15); border: none; color: white; font-size: 24px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0;">✕</button>
+        <button id="chatech-close" style="background: rgba(255,255,255,0.15); border: none; color: white; font-size: 20px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0;">✕</button>
       </div>
-      <div id="chatech-messages" style="flex: 1; overflow-y: auto; padding: 20px; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);"></div>
-      <div id="chatech-typing" style="display: none; padding: 14px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0;">
-        <div style="display: flex; gap: 5px; align-items: center;">
-          <div style="width: 9px; height: 9px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite;"></div>
-          <div style="width: 9px; height: 9px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite 0.2s;"></div>
-          <div style="width: 9px; height: 9px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite 0.4s;"></div>
-          <span style="margin-left: 10px; font-size: 14px; color: #64748b;">Escribiendo...</span>
+      <div id="chatech-messages" style="flex: 1; overflow-y: auto; padding: 16px; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);"></div>
+      <div id="chatech-typing" style="display: none; padding: 10px 16px; background: #f8fafc; border-top: 1px solid #e2e8f0;">
+        <div style="display: flex; gap: 4px; align-items: center;">
+          <div style="width: 7px; height: 7px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite;"></div>
+          <div style="width: 7px; height: 7px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite 0.2s;"></div>
+          <div style="width: 7px; height: 7px; border-radius: 50%; background: ${config.primaryColor}; animation: chatech-pulse 1.4s infinite 0.4s;"></div>
+          <span style="margin-left: 8px; font-size: 12px; color: #64748b;">Escribiendo...</span>
         </div>
       </div>
-      <div style="padding: 18px 20px; background: white; border-top: 1px solid #e2e8f0;">
-        <div style="display: flex; gap: 12px; align-items: center;">
-          <input id="chatech-input" type="text" placeholder="Escribe tu mensaje..." style="flex: 1; padding: 14px 20px; border: 2px solid #e2e8f0; border-radius: 24px; outline: none; font-size: 15px; font-family: inherit; transition: all 0.2s; background: #f8fafc;" />
-          <button id="chatech-send" style="background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%); color: white; border: none; padding: 14px 28px; border-radius: 24px; cursor: pointer; font-weight: 600; font-size: 15px; white-space: nowrap; box-shadow: 0 4px 12px ${config.primaryColor}40; transition: all 0.2s; flex-shrink: 0;">Enviar</button>
+      <div style="padding: 12px 16px; background: white; border-top: 1px solid #e2e8f0;">
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input id="chatech-input" type="text" placeholder="Escribe tu mensaje..." style="flex: 1; padding: 10px 14px; border: 2px solid #e2e8f0; border-radius: 20px; outline: none; font-size: 14px; font-family: inherit; transition: all 0.2s; background: #f8fafc;" />
+          <button id="chatech-send" style="background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 14px; white-space: nowrap; box-shadow: 0 4px 12px ${config.primaryColor}40; transition: all 0.2s; flex-shrink: 0;">Enviar</button>
         </div>
-        <div style="margin-top: 12px; text-align: center;">
-          <small style="color: #94a3b8; font-size: 11px;">Powered by <strong>ChatEch</strong></small>
+        <div style="margin-top: 8px; text-align: center;">
+          <small style="color: #94a3b8; font-size: 10px;">Powered by <strong>ChatEch</strong></small>
         </div>
       </div>
     `;
@@ -300,6 +302,8 @@
     const badge = document.getElementById('chatech-badge');
     
     if (isOpen) {
+      chatWindow.style.right = buttonPos.right + 'px';
+      chatWindow.style.bottom = (buttonPos.bottom + 80) + 'px';
       chatWindow.style.display = 'flex';
       badge.style.display = 'none';
       setTimeout(() => {
@@ -376,30 +380,30 @@
       messageDiv.style.cssText = `
         background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%);
         color: white;
-        padding: 14px 18px;
-        border-radius: 20px;
+        padding: 10px 14px;
+        border-radius: 16px;
         border-bottom-right-radius: 4px;
-        margin-bottom: 14px;
+        margin-bottom: 10px;
         margin-left: auto;
-        max-width: 75%;
+        max-width: 80%;
         word-wrap: break-word;
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.4;
         box-shadow: 0 2px 8px ${config.primaryColor}30;
       `;
     } else {
       messageDiv.style.cssText = `
         background: white;
         color: #1e293b;
-        padding: 14px 18px;
-        border-radius: 20px;
+        padding: 10px 14px;
+        border-radius: 16px;
         border-bottom-left-radius: 4px;
-        margin-bottom: 14px;
-        max-width: 75%;
+        margin-bottom: 10px;
+        max-width: 80%;
         word-wrap: break-word;
         white-space: pre-line;
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.4;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         border: 1px solid #e2e8f0;
       `;
