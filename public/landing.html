@@ -3,942 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChatEch - Asistente IA para tu E-commerce | Atención 24/7</title>
-  <meta name="description" content="Widget de chat con IA que responde consultas de tus clientes automáticamente. Integración en 5 minutos. Para Shopify, Instagram, páginas web.">
-  
-  <!-- Fonts -->
+  <title>ChatEch - Asistente Virtual para tu Tienda Online</title>
+  <meta name="description" content="Automatizá la atención al cliente de tu tienda con inteligencia artificial. Respuestas instantáneas 24/7, seguimiento de pedidos y más.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --accent: #22d3ee;
-      --accent-glow: rgba(34, 211, 238, 0.3);
-      --dark: #0f172a;
-      --dark-soft: #1e293b;
-      --gray: #64748b;
-      --light: #f8fafc;
-      --white: #ffffff;
-      --gradient: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 50%, var(--accent) 100%);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Outfit', -apple-system, sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* Grain overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(20px);
-      background: rgba(15, 23, 42, 0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .logo {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--gray);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.875rem 1.75rem;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: var(--white);
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 80%;
-      height: 150%;
-      background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-bg-2 {
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 60%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.1) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-text h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-text p {
-      font-size: 1.25rem;
-      color: var(--gray);
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .stat {
-      text-align: left;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      font-family: 'Space Mono', monospace;
-    }
-
-    .stat-label {
-      font-size: 0.875rem;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* Widget Demo */
-    .widget-demo {
-      position: relative;
-    }
-
-    .phone-mockup {
-      width: 100%;
-      max-width: 380px;
-      margin: 0 auto;
-      background: var(--dark-soft);
-      border-radius: 40px;
-      padding: 12px;
-      box-shadow: 
-        0 50px 100px -20px rgba(0,0,0,0.5),
-        0 30px 60px -30px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .phone-screen {
-      background: var(--white);
-      border-radius: 32px;
-      overflow: hidden;
-      height: 600px;
-    }
-
-    .chat-header {
-      background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
-      color: white;
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .chat-avatar {
-      width: 48px;
-      height: 48px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-    }
-
-    .chat-info h3 {
-      font-size: 1.125rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .chat-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      opacity: 0.9;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #4ade80;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .chat-messages {
-      padding: 1rem;
-      height: calc(100% - 160px);
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .message {
-      max-width: 80%;
-      padding: 0.875rem 1rem;
-      border-radius: 18px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      animation: messageIn 0.3s ease;
-    }
-
-    @keyframes messageIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .message-bot {
-      background: #f1f5f9;
-      color: #1e293b;
-      border-bottom-left-radius: 4px;
-      align-self: flex-start;
-    }
-
-    .message-user {
-      background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
-      color: white;
-      border-bottom-right-radius: 4px;
-      align-self: flex-end;
-    }
-
-    .chat-input {
-      padding: 1rem;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      border: 2px solid #e2e8f0;
-      border-radius: 24px;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .chat-input button {
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
-      color: white;
-      border: none;
-      border-radius: 24px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* Features Section */
-    .features {
-      padding: 8rem 2rem;
-      position: relative;
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 4rem;
-    }
-
-    .section-label {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 100px;
-      color: var(--accent);
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .section-header p {
-      color: var(--gray);
-      font-size: 1.125rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-
-    .feature-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(99, 102, 241, 0.3);
-      transform: translateY(-4px);
-    }
-
-    .feature-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--gradient);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .feature-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .feature-card p {
-      color: var(--gray);
-      font-size: 0.95rem;
-    }
-
-    /* How it works */
-    .how-it-works {
-      padding: 8rem 2rem;
-      background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step::after {
-      content: '→';
-      position: absolute;
-      right: -1.5rem;
-      top: 2rem;
-      font-size: 2rem;
-      color: var(--gray);
-    }
-
-    .step:last-child::after {
-      display: none;
-    }
-
-    .step-number {
-      width: 64px;
-      height: 64px;
-      background: var(--gradient);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0 auto 1.5rem;
-      font-family: 'Space Mono', monospace;
-    }
-
-    .step h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .step p {
-      color: var(--gray);
-      font-size: 0.95rem;
-    }
-
-    /* Platforms */
-    .platforms {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .platforms h3 {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-
-    .platform-logos {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-      opacity: 0.5;
-    }
-
-    .platform-logos span {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    /* Pricing */
-    .pricing {
-      padding: 8rem 2rem;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 24px;
-      padding: 2.5rem;
-      position: relative;
-      transition: all 0.3s;
-    }
-
-    .pricing-card.featured {
-      background: rgba(99, 102, 241, 0.1);
-      border-color: var(--primary);
-      transform: scale(1.05);
-    }
-
-    .pricing-card.featured::before {
-      content: 'Más Popular';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gradient);
-      padding: 0.5rem 1.5rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-card .price {
-      font-size: 3rem;
-      font-weight: 700;
-      font-family: 'Space Mono', monospace;
-      margin: 1rem 0;
-    }
-
-    .pricing-card .price span {
-      font-size: 1rem;
-      color: var(--gray);
-      font-weight: 400;
-    }
-
-    .pricing-card .features-list {
-      list-style: none;
-      margin: 2rem 0;
-    }
-
-    .pricing-card .features-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: var(--gray);
-    }
-
-    .pricing-card .features-list li::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    /* CTA */
-    .cta {
-      padding: 8rem 2rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .cta-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .cta h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 1rem;
-    }
-
-    .cta p {
-      color: var(--gray);
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    /* Footer */
-    footer {
-      padding: 4rem 2rem 2rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      text-align: center;
-    }
-
-    footer .logo {
-      margin-bottom: 1rem;
-    }
-
-    footer p {
-      color: var(--gray);
-      font-size: 0.875rem;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 968px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-text p {
-        margin: 0 auto 2rem;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .phone-mockup {
-        max-width: 320px;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .step::after {
-        display: none;
-      }
-
-      .pricing-card.featured {
-        transform: none;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-stats {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .stat {
-        text-align: center;
-      }
-    }
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;line-height:1.6;overflow-x:hidden}nav{position:fixed;top:0;left:0;right:0;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,10,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-cta{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s,box-shadow .2s}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(102,126,234,.3)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px 80px;position:relative}.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(102,126,234,.15) 0%,transparent 70%);pointer-events:none}.hero-content{max-width:800px;text-align:center;position:relative;z-index:1}.badge{display:inline-block;background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.3);padding:8px 20px;border-radius:30px;font-size:14px;color:#667eea;margin-bottom:30px}h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;letter-spacing:-2px}h1 span{background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{font-size:20px;color:#888;max-width:600px;margin:0 auto 40px}.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}.btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:16px;transition:all .2s;border:none;cursor:pointer}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(102,126,234,.4)}.btn-secondary{background:rgba(255,255,255,.05);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid rgba(255,255,255,.1);transition:all .2s}.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}.demo-section{padding:80px 40px;position:relative}.demo-container{max-width:1000px;margin:0 auto;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:24px;padding:40px;border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}.demo-container::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(102,126,234,.1) 0%,transparent 60%);pointer-events:none}.demo-header{text-align:center;margin-bottom:40px;position:relative;z-index:1}.demo-header h2{font-size:32px;margin-bottom:12px}.demo-header p{color:#888}.demo-widget{max-width:360px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;z-index:1}.demo-widget-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:16px;display:flex;align-items:center;gap:12px}.demo-widget-avatar{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}.demo-widget-info h4{font-size:15px;font-weight:600;margin-bottom:2px}.demo-widget-status{display:flex;align-items:center;gap:5px;font-size:12px;opacity:.9}.demo-widget-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%}.demo-widget-messages{padding:16px;background:#f8fafc;min-height:200px}.demo-message{padding:10px 14px;border-radius:14px;margin-bottom:10px;max-width:85%;font-size:14px;animation:fadeIn .5s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.demo-message.bot{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px}.demo-message.user{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;margin-left:auto;border-bottom-right-radius:4px}.demo-widget-input{padding:12px 16px;background:#fff;border-top:1px solid #e2e8f0;display:flex;gap:8px}.demo-widget-input input{flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:20px;font-size:14px;outline:none}.demo-widget-input button{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer}.features{padding:100px 40px}.features-header{text-align:center;max-width:600px;margin:0 auto 60px}.features-header h2{font-size:40px;margin-bottom:16px}.features-header p{color:#888;font-size:18px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}.feature-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;transition:all .3s}.feature-card:hover{background:rgba(255,255,255,.05);border-color:rgba(102,126,234,.3);transform:translateY(-4px)}.feature-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(102,126,234,.2) 0%,rgba(118,75,162,.2) 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}.feature-card h3{font-size:20px;margin-bottom:12px}.feature-card p{color:#888;font-size:15px}.pricing{padding:100px 40px;background:linear-gradient(180deg,transparent 0%,rgba(102,126,234,.03) 100%)}.pricing-header{text-align:center;max-width:600px;margin:0 auto 60px}.pricing-header h2{font-size:40px;margin-bottom:16px}.pricing-header p{color:#888;font-size:18px}.pricing-card{max-width:500px;margin:0 auto;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:24px;padding:48px;border:1px solid rgba(102,126,234,.3);text-align:center;position:relative;overflow:hidden}.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}.pricing-badge{display:inline-block;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:24px}.pricing-price{font-size:64px;font-weight:800;margin-bottom:8px}.pricing-price span{font-size:20px;font-weight:500;color:#888}.pricing-subtitle{color:#888;margin-bottom:32px}.pricing-features{text-align:left;margin-bottom:32px}.pricing-feature{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}.pricing-feature:last-child{border-bottom:none}.pricing-check{width:24px;height:24px;background:rgba(74,222,128,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#4ade80;font-size:14px;flex-shrink:0}.cta{padding:100px 40px;text-align:center}.cta-box{max-width:700px;margin:0 auto;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:24px;padding:60px 40px;position:relative;overflow:hidden}.cta-box::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 60%);pointer-events:none}.cta-box h2{font-size:36px;margin-bottom:16px;position:relative;z-index:1}.cta-box p{font-size:18px;opacity:.9;margin-bottom:32px;position:relative;z-index:1}.btn-white{background:#fff;color:#667eea;padding:16px 40px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all .2s;position:relative;z-index:1}.btn-white:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,0,0,.2)}footer{padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}footer p{color:#666;font-size:14px}footer a{color:#667eea;text-decoration:none}@media(max-width:768px){nav{padding:16px 20px}.hero{padding:100px 20px 60px}.hero p{font-size:17px}.features,.pricing,.cta{padding:60px 20px}.demo-container{padding:24px}.pricing-card{padding:32px 24px}.cta-box{padding:40px 24px}}
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <div class="logo">ChatEch</div>
-    <ul class="nav-links">
-      <li><a href="#features">Características</a></li>
-      <li><a href="#how">Cómo funciona</a></li>
-      <li><a href="#pricing">Precios</a></li>
-    </ul>
-    <a href="#contact" class="btn btn-primary">Empezar Gratis</a>
+    <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20info%20sobre%20ChatEch" class="nav-cta">Contactar</a>
   </nav>
-
-  <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-bg-2"></div>
     <div class="hero-content">
-      <div class="hero-text">
-        <h1>Tu asistente de ventas <span>disponible 24/7</span></h1>
-        <p>Widget de chat con IA que responde consultas de productos, stock, envíos y pagos automáticamente. Integración en 5 minutos.</p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">
-            Probar 14 días gratis →
-          </a>
-          <a href="#demo" class="btn btn-outline">
-            Ver demo en vivo
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">85%</div>
-            <div class="stat-label">Consultas resueltas</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">&lt;3s</div>
-            <div class="stat-label">Tiempo de respuesta</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Disponibilidad</div>
-          </div>
-        </div>
+      <div class="badge">🚀 Inteligencia Artificial para E-commerce</div>
+      <h1>Tu tienda online <span>siempre atendida</span></h1>
+      <p>Automatizá la atención al cliente con un asistente virtual inteligente que responde consultas, informa sobre productos y hace seguimiento de pedidos.</p>
+      <div class="hero-buttons">
+        <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch%20para%20mi%20tienda" class="btn-primary">Quiero ChatEch</a>
+        <a href="#demo" class="btn-secondary">Ver demo</a>
       </div>
-      <div class="widget-demo">
-        <div class="phone-mockup">
-          <div class="phone-screen">
-            <div class="chat-header">
-              <div class="chat-avatar">👗</div>
-              <div class="chat-info">
-                <h3>ShopNow</h3>
-                <div class="chat-status">
-                  <div class="status-dot"></div>
-                  En línea
-                </div>
-              </div>
-            </div>
-            <div class="chat-messages">
-              <div class="message message-bot">¡Hola! 👋 Soy el asistente de ShopNow. ¿En qué puedo ayudarte?</div>
-              <div class="message message-user">Hola! Tienen el vestido negro en talle M?</div>
-              <div class="message message-bot">¡Sí! El vestido negro está disponible en talle M. Precio: $45.000. ¿Te gustaría que te pase el link para comprarlo? 🛒</div>
-              <div class="message message-user">Sí! Y hacen envíos a Córdoba?</div>
-              <div class="message message-bot">¡Por supuesto! Hacemos envíos a todo el país. Para Córdoba el costo es $3.500 y llega en 3-5 días hábiles. 📦</div>
-            </div>
-            <div class="chat-input">
-              <input type="text" placeholder="Escribe tu mensaje...">
-              <button>Enviar</button>
-            </div>
+    </div>
+  </section>
+  <section class="demo-section" id="demo">
+    <div class="demo-container">
+      <div class="demo-header">
+        <h2>Mirá cómo funciona</h2>
+        <p>Tu asistente responde instantáneamente a tus clientes</p>
+      </div>
+      <div class="demo-widget">
+        <div class="demo-widget-header">
+          <div class="demo-widget-avatar">🛍️</div>
+          <div class="demo-widget-info">
+            <h4>Tu Tienda</h4>
+            <div class="demo-widget-status">En línea</div>
           </div>
+        </div>
+        <div class="demo-widget-messages" id="demo-messages">
+          <div class="demo-message bot">¡Hola! 👋 Soy el asistente de Tu Tienda. ¿En qué puedo ayudarte?</div>
+        </div>
+        <div class="demo-widget-input">
+          <input type="text" placeholder="Escribe un mensaje..." id="demo-input">
+          <button onclick="sendDemoMessage()">Enviar</button>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Features -->
-  <section class="features" id="features">
-    <div class="section-header">
-      <span class="section-label">Características</span>
-      <h2>Todo lo que necesitás para vender más</h2>
-      <p>Un asistente inteligente que conoce tu negocio y atiende a tus clientes como vos lo harías.</p>
+  <section class="features">
+    <div class="features-header">
+      <h2>Todo lo que necesitás</h2>
+      <p>Un asistente completo que trabaja para vos mientras dormís</p>
     </div>
     <div class="features-grid">
       <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Respuestas instantáneas</h3>
+        <p>Tu asistente responde en segundos, cualquier día, a cualquier hora. Nunca más pierdas una venta por no contestar a tiempo.</p>
+      </div>
+      <div class="feature-card">
         <div class="feature-icon">🎨</div>
-        <h3>100% Personalizable</h3>
-        <p>Colores, logo, mensajes y tono de voz adaptados a tu marca. Tu widget, tu estilo.</p>
+        <h3>100% personalizable</h3>
+        <p>Colores, logo y personalidad adaptados a tu marca. El widget se integra perfectamente con el diseño de tu tienda.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Seguimiento de pedidos</h3>
+        <p>Tus clientes pueden consultar el estado de su pedido directamente desde el chat, sin necesidad de contactarte.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
-        <h3>IA Entrenada</h3>
-        <p>Conoce tu catálogo, precios, políticas de envío y medios de pago. Responde como un experto.</p>
+        <h3>Entrenado con tu catálogo</h3>
+        <p>El asistente conoce tus productos, precios, políticas de envío y todo lo que necesita para atender como vos lo harías.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Analytics</h3>
-        <p>Métricas de conversaciones, preguntas frecuentes y oportunidades de mejora.</p>
+        <div class="feature-icon">📱</div>
+        <h3>Mobile friendly</h3>
+        <p>Funciona perfecto en celulares y tablets. El widget se adapta a cualquier pantalla y se puede mover libremente.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
-        <h3>Respuesta Instantánea</h3>
-        <p>Menos de 3 segundos de tiempo de respuesta. Tus clientes no esperan.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔌</div>
-        <h3>Fácil Integración</h3>
-        <p>Un snippet de código y listo. Funciona con Shopify, Tienda Nube, WordPress y más.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <h3>Memoria de Conversación</h3>
-        <p>Recuerda el contexto de la charla. Conversaciones naturales y fluidas.</p>
+        <h3>Instalación en minutos</h3>
+        <p>Solo pegás una línea de código y listo. Funciona con Tiendanube, Shopify, WooCommerce, Empretienda y más.</p>
       </div>
     </div>
   </section>
-
-  <!-- How it works -->
-  <section class="how-it-works" id="how">
-    <div class="section-header">
-      <span class="section-label">Cómo funciona</span>
-      <h2>En 3 simples pasos</h2>
-      <p>Tené tu asistente funcionando en menos de 10 minutos.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Contanos tu negocio</h3>
-        <p>Compartí información sobre tus productos, precios, envíos y políticas.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Personalizamos el widget</h3>
-        <p>Configuramos los colores, mensajes y entrenamos la IA con tu info.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Copiás un código</h3>
-        <p>Pegás una línea de código en tu sitio y listo. ¡Ya estás vendiendo 24/7!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Platforms -->
-  <section class="platforms">
-    <h3>Compatible con todas las plataformas</h3>
-    <div class="platform-logos">
-      <span>Shopify</span>
-      <span>Tienda Nube</span>
-      <span>WooCommerce</span>
-      <span>Instagram</span>
-      <span>Web propia</span>
-    </div>
-  </section>
-
-  <!-- Pricing -->
   <section class="pricing" id="pricing">
-    <div class="section-header">
-      <span class="section-label">Precios</span>
-      <h2>Planes simples y transparentes</h2>
-      <p>Sin sorpresas. Cancelá cuando quieras.</p>
+    <div class="pricing-header">
+      <h2>Un solo plan, todo incluido</h2>
+      <p>Sin sorpresas, sin letra chica. Pagás y tenés todo.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Starter</h3>
-        <p style="color: var(--gray)">Para emprendedores</p>
-        <div class="price">$15.000<span>/mes</span></div>
-        <ul class="features-list">
-          <li>500 mensajes/mes</li>
-          <li>1 tienda</li>
-          <li>Personalización básica</li>
-          <li>Soporte por email</li>
-        </ul>
-        <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Empezar</a>
+    <div class="pricing-card">
+      <div class="pricing-badge">✨ Todo incluido</div>
+      <div class="pricing-price">$50 <span>USD/mes</span></div>
+      <div class="pricing-subtitle">Facturación mensual • Cancelá cuando quieras</div>
+      <div class="pricing-features">
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Widget personalizado (colores y logo)</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Entrenamiento completo con tu catálogo</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Seguimiento de pedidos</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Conversaciones ilimitadas</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Soporte por email</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Configuración inicial incluida</span></div>
+        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Actualizaciones gratis</span></div>
       </div>
-      <div class="pricing-card featured">
-        <h3>Profesional</h3>
-        <p style="color: var(--gray)">Para negocios en crecimiento</p>
-        <div class="price">$35.000<span>/mes</span></div>
-        <ul class="features-list">
-          <li>3.000 mensajes/mes</li>
-          <li>3 tiendas</li>
-          <li>Personalización completa</li>
-          <li>Analytics avanzados</li>
-          <li>Soporte prioritario</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Empezar</a>
-      </div>
-      <div class="pricing-card">
-        <h3>Enterprise</h3>
-        <p style="color: var(--gray)">Para grandes volúmenes</p>
-        <div class="price">Consultar</div>
-        <ul class="features-list">
-          <li>Mensajes ilimitados</li>
-          <li>Tiendas ilimitadas</li>
-          <li>API personalizada</li>
-          <li>Integraciones custom</li>
-          <li>Soporte dedicado</li>
-        </ul>
-        <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Contactar</a>
-      </div>
+      <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20contratar%20ChatEch" class="btn-primary" style="width:100%;display:block;">Empezar ahora</a>
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <div class="cta-bg"></div>
-    <div class="cta-content">
-      <h2>¿Listo para vender más?</h2>
-      <p>Probá ChatEch gratis por 14 días. Sin tarjeta de crédito.</p>
-      <a href="https://wa.me/5491112345678?text=Hola!%20Quiero%20probar%20ChatEch%20para%20mi%20tienda" class="btn btn-primary" style="font-size: 1.125rem; padding: 1rem 2.5rem;">
-        Contactar por WhatsApp →
-      </a>
+  <section class="cta">
+    <div class="cta-box">
+      <h2>¿Listo para automatizar tu atención?</h2>
+      <p>Configuramos todo por vos. En 24hs tu asistente está funcionando.</p>
+      <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch%20para%20mi%20tienda" class="btn-white">Contactar</a>
     </div>
   </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="logo">ChatEch</div>
-    <p style="margin-bottom: 1rem;">Hecho con ❤️ en Argentina 🇦🇷</p>
-    <p>© 2024 ChatEch - RF Analytics. <a href="mailto:ramiro@chatech.com">ramiro@chatech.com</a></p>
+    <p>© 2024 ChatEch · Hecho con ❤️ en Argentina · <a href="mailto:contacto.rfanalytics@gmail.com">contacto.rfanalytics@gmail.com</a></p>
   </footer>
+  <script>
+    const demoResponses={hola:'¡Hola! 👋 ¿En qué puedo ayudarte hoy?',precio:'Tenemos productos desde $45.000 hasta $250.000. ¿Qué tipo de producto te interesa?',envio:'Hacemos envíos a todo el país. CABA y GBA en 24-48hs, interior en 3-5 días hábiles. 🚚',pedido:'¡Claro! Pasame tu número de pedido y te digo el estado al instante. 📦',horario:'Gracias a mí, la tienda está atendida 24/7. Pero el equipo humano responde de 9am a 6pm. 😊',pago:'Aceptamos todas las tarjetas, Mercado Pago, transferencia y efectivo.',default:'¡Gracias por tu mensaje! ¿Hay algo más en lo que pueda ayudarte?'};function sendDemoMessage(){const input=document.getElementById('demo-input');const messages=document.getElementById('demo-messages');const text=input.value.trim().toLowerCase();if(!text)return;const userMsg=document.createElement('div');userMsg.className='demo-message user';userMsg.textContent=input.value;messages.appendChild(userMsg);input.value='';setTimeout(()=>{const botMsg=document.createElement('div');botMsg.className='demo-message bot';let response=demoResponses.default;for(const[key,value]of Object.entries(demoResponses)){if(text.includes(key)){response=value;break}}botMsg.textContent=response;messages.appendChild(botMsg);messages.scrollTop=messages.scrollHeight},800);messages.scrollTop=messages.scrollHeight}document.getElementById('demo-input').addEventListener('keypress',(e)=>{if(e.key==='Enter')sendDemoMessage()});
+  </script>
 </body>
 </html>
