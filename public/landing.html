@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatEch - Asistente Virtual para tu Tienda Online</title>
-  <meta name="description" content="Automatizá la atención al cliente de tu tienda con inteligencia artificial. Respuestas instantáneas 24/7, seguimiento de pedidos y más.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="description" content="Automatizá la atención al cliente de tu tienda con inteligencia artificial. Respuestas instantáneas 24/7.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;line-height:1.6;overflow-x:hidden}nav{position:fixed;top:0;left:0;right:0;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,10,.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-cta{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px;transition:transform .2s,box-shadow .2s}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(102,126,234,.3)}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px 80px;position:relative}.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(102,126,234,.15) 0%,transparent 70%);pointer-events:none}.hero-content{max-width:800px;text-align:center;position:relative;z-index:1}.badge{display:inline-block;background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.3);padding:8px 20px;border-radius:30px;font-size:14px;color:#667eea;margin-bottom:30px}h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px;letter-spacing:-2px}h1 span{background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{font-size:20px;color:#888;max-width:600px;margin:0 auto 40px}.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}.btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:16px;transition:all .2s;border:none;cursor:pointer}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(102,126,234,.4)}.btn-secondary{background:rgba(255,255,255,.05);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid rgba(255,255,255,.1);transition:all .2s}.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}.demo-section{padding:80px 40px;position:relative}.demo-container{max-width:1000px;margin:0 auto;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:24px;padding:40px;border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}.demo-container::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(102,126,234,.1) 0%,transparent 60%);pointer-events:none}.demo-header{text-align:center;margin-bottom:40px;position:relative;z-index:1}.demo-header h2{font-size:32px;margin-bottom:12px}.demo-header p{color:#888}.demo-widget{max-width:360px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;z-index:1}.demo-widget-header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:16px;display:flex;align-items:center;gap:12px}.demo-widget-avatar{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}.demo-widget-info h4{font-size:15px;font-weight:600;margin-bottom:2px}.demo-widget-status{display:flex;align-items:center;gap:5px;font-size:12px;opacity:.9}.demo-widget-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%}.demo-widget-messages{padding:16px;background:#f8fafc;min-height:200px}.demo-message{padding:10px 14px;border-radius:14px;margin-bottom:10px;max-width:85%;font-size:14px;animation:fadeIn .5s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.demo-message.bot{background:#fff;color:#1e293b;border:1px solid #e2e8f0;border-bottom-left-radius:4px}.demo-message.user{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;margin-left:auto;border-bottom-right-radius:4px}.demo-widget-input{padding:12px 16px;background:#fff;border-top:1px solid #e2e8f0;display:flex;gap:8px}.demo-widget-input input{flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:20px;font-size:14px;outline:none}.demo-widget-input button{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:600;font-size:13px;cursor:pointer}.features{padding:100px 40px}.features-header{text-align:center;max-width:600px;margin:0 auto 60px}.features-header h2{font-size:40px;margin-bottom:16px}.features-header p{color:#888;font-size:18px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}.feature-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px;transition:all .3s}.feature-card:hover{background:rgba(255,255,255,.05);border-color:rgba(102,126,234,.3);transform:translateY(-4px)}.feature-icon{width:50px;height:50px;background:linear-gradient(135deg,rgba(102,126,234,.2) 0%,rgba(118,75,162,.2) 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}.feature-card h3{font-size:20px;margin-bottom:12px}.feature-card p{color:#888;font-size:15px}.pricing{padding:100px 40px;background:linear-gradient(180deg,transparent 0%,rgba(102,126,234,.03) 100%)}.pricing-header{text-align:center;max-width:600px;margin:0 auto 60px}.pricing-header h2{font-size:40px;margin-bottom:16px}.pricing-header p{color:#888;font-size:18px}.pricing-card{max-width:500px;margin:0 auto;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:24px;padding:48px;border:1px solid rgba(102,126,234,.3);text-align:center;position:relative;overflow:hidden}.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}.pricing-badge{display:inline-block;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:24px}.pricing-price{font-size:64px;font-weight:800;margin-bottom:8px}.pricing-price span{font-size:20px;font-weight:500;color:#888}.pricing-subtitle{color:#888;margin-bottom:32px}.pricing-features{text-align:left;margin-bottom:32px}.pricing-feature{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}.pricing-feature:last-child{border-bottom:none}.pricing-check{width:24px;height:24px;background:rgba(74,222,128,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#4ade80;font-size:14px;flex-shrink:0}.cta{padding:100px 40px;text-align:center}.cta-box{max-width:700px;margin:0 auto;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:24px;padding:60px 40px;position:relative;overflow:hidden}.cta-box::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 60%);pointer-events:none}.cta-box h2{font-size:36px;margin-bottom:16px;position:relative;z-index:1}.cta-box p{font-size:18px;opacity:.9;margin-bottom:32px;position:relative;z-index:1}.btn-white{background:#fff;color:#667eea;padding:16px 40px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;transition:all .2s;position:relative;z-index:1}.btn-white:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,0,0,.2)}footer{padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}footer p{color:#666;font-size:14px}footer a{color:#667eea;text-decoration:none}@media(max-width:768px){nav{padding:16px 20px}.hero{padding:100px 20px 60px}.hero p{font-size:17px}.features,.pricing,.cta{padding:60px 20px}.demo-container{padding:24px}.pricing-card{padding:32px 24px}.cta-box{padding:40px 24px}}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;line-height:1.6}nav{position:fixed;top:0;left:0;right:0;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,10,.9);backdrop-filter:blur(20px)}.logo{font-size:24px;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-cta{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:600;font-size:14px}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px 80px;text-align:center}.hero-content{max-width:800px}.badge{display:inline-block;background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.3);padding:8px 20px;border-radius:30px;font-size:14px;color:#667eea;margin-bottom:30px}h1{font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.1;margin-bottom:24px}h1 span{background:linear-gradient(135deg,#667eea,#764ba2,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero p{font-size:20px;color:#888;max-width:600px;margin:0 auto 40px}.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}.btn-primary{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:16px}.btn-secondary{background:rgba(255,255,255,.05);color:#fff;padding:16px 36px;border-radius:30px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,.1)}.case-study{padding:80px 40px;background:rgba(102,126,234,.03)}.case-container{max-width:900px;margin:0 auto;text-align:center}.case-container h2{font-size:36px;margin-bottom:16px}.case-container>p{color:#888;margin-bottom:50px;font-size:18px}.case-card{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:24px;padding:50px;display:flex;gap:50px;align-items:center;text-align:left;border:1px solid rgba(255,255,255,.05)}.case-logo{flex-shrink:0}.case-logo img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid rgba(102,126,234,.3)}.case-info h3{font-size:28px;margin-bottom:12px}.case-info .tagline{color:#667eea;font-size:14px;margin-bottom:20px}.case-info blockquote{color:#ccc;font-size:16px;line-height:1.7;margin-bottom:24px;font-style:italic}.case-stats{display:flex;gap:40px}.case-stat .number{font-size:28px;font-weight:800;color:#667eea}.case-stat .label{font-size:12px;color:#888;margin-top:4px}.features{padding:100px 40px}.features-header{text-align:center;max-width:600px;margin:0 auto 60px}.features-header h2{font-size:40px;margin-bottom:16px}.features-header p{color:#888;font-size:18px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}.feature-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:32px}.feature-icon{font-size:32px;margin-bottom:20px}.feature-card h3{font-size:20px;margin-bottom:12px}.feature-card p{color:#888;font-size:15px}.pricing{padding:100px 40px}.pricing-header{text-align:center;margin-bottom:60px}.pricing-header h2{font-size:40px;margin-bottom:16px}.pricing-header p{color:#888;font-size:18px}.pricing-card{max-width:500px;margin:0 auto;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:24px;padding:48px;border:1px solid rgba(102,126,234,.3);text-align:center}.pricing-badge{display:inline-block;background:linear-gradient(135deg,#667eea,#764ba2);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:24px}.pricing-price{font-size:64px;font-weight:800;margin-bottom:8px}.pricing-price span{font-size:20px;color:#888}.pricing-subtitle{color:#888;margin-bottom:32px}.pricing-features{text-align:left;margin-bottom:32px}.pricing-feature{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}.pricing-check{color:#4ade80}.cta{padding:100px 40px;text-align:center}.cta-box{max-width:700px;margin:0 auto;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:24px;padding:60px 40px}.cta-box h2{font-size:36px;margin-bottom:16px}.cta-box p{font-size:18px;opacity:.9;margin-bottom:32px}.btn-white{background:#fff;color:#667eea;padding:16px 40px;border-radius:30px;text-decoration:none;font-weight:700;font-size:16px}footer{padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}footer p{color:#666;font-size:14px}footer a{color:#667eea;text-decoration:none}@media(max-width:768px){nav{padding:16px 20px}.hero{padding:100px 20px 60px}.case-card{flex-direction:column;text-align:center;padding:30px}.case-stats{justify-content:center}.features,.pricing,.cta{padding:60px 20px}}
   </style>
 </head>
 <body>
@@ -17,6 +15,7 @@
     <div class="logo">ChatEch</div>
     <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20info%20sobre%20ChatEch" class="nav-cta">Contactar</a>
   </nav>
+
   <section class="hero">
     <div class="hero-content">
       <div class="badge">🚀 Inteligencia Artificial para E-commerce</div>
@@ -24,35 +23,43 @@
       <p>Automatizá la atención al cliente con un asistente virtual inteligente que responde consultas, informa sobre productos y hace seguimiento de pedidos.</p>
       <div class="hero-buttons">
         <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch%20para%20mi%20tienda" class="btn-primary">Quiero ChatEch</a>
-        <a href="#demo" class="btn-secondary">Ver demo</a>
+        <a href="#caso" class="btn-secondary">Ver caso de éxito</a>
       </div>
     </div>
   </section>
-  <section class="demo-section" id="demo">
-    <div class="demo-container">
-      <div class="demo-header">
-        <h2>Mirá cómo funciona</h2>
-        <p>Tu asistente responde instantáneamente a tus clientes</p>
-      </div>
-      <div class="demo-widget">
-        <div class="demo-widget-header">
-          <div class="demo-widget-avatar">🛍️</div>
-          <div class="demo-widget-info">
-            <h4>Tu Tienda</h4>
-            <div class="demo-widget-status">En línea</div>
+
+  <section class="case-study" id="caso">
+    <div class="case-container">
+      <h2>Ya funciona en tiendas reales</h2>
+      <p>Mirá cómo ChatEch ayuda a nuestros clientes</p>
+      <div class="case-card">
+        <div class="case-logo">
+          <img src="/logos/cousins-logo.png" alt="Cousin SNKRS">
+        </div>
+        <div class="case-info">
+          <h3>Cousin SNKRS</h3>
+          <div class="tagline">Tienda de sneakers y streetwear</div>
+          <blockquote>"Ahora mis clientes reciben respuestas inmediatas sobre productos, talles y precios. Ya no pierdo ventas por no contestar a tiempo."</blockquote>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="number">24/7</div>
+              <div class="label">Atención</div>
+            </div>
+            <div class="case-stat">
+              <div class="number">&lt;5s</div>
+              <div class="label">Respuesta</div>
+            </div>
+            <div class="case-stat">
+              <div class="number">100%</div>
+              <div class="label">Personalizado</div>
+            </div>
           </div>
         </div>
-        <div class="demo-widget-messages" id="demo-messages">
-          <div class="demo-message bot">¡Hola! 👋 Bienvenido a nuestra tienda. ¿En qué puedo ayudarte?</div>
-        </div>
-        <div class="demo-widget-input">
-          <input type="text" placeholder="Escribe un mensaje..." id="demo-input">
-          <button onclick="sendDemoMessage()">Enviar</button>
-        </div>
       </div>
     </div>
   </section>
-  <section class="features">
+
+  <section class="features" id="features">
     <div class="features-header">
       <h2>Todo lo que necesitás</h2>
       <p>Un asistente completo que trabaja para vos mientras dormís</p>
@@ -61,68 +68,68 @@
       <div class="feature-card">
         <div class="feature-icon">💬</div>
         <h3>Respuestas instantáneas</h3>
-        <p>Tu asistente responde en segundos, cualquier día, a cualquier hora. Nunca más pierdas una venta por no contestar a tiempo.</p>
+        <p>Tu asistente responde en segundos, cualquier día, a cualquier hora. Nunca más pierdas una venta.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🎨</div>
         <h3>100% personalizable</h3>
-        <p>Colores, logo y personalidad adaptados a tu marca. El widget se integra perfectamente con el diseño de tu tienda.</p>
+        <p>Colores, logo y personalidad adaptados a tu marca. Se integra perfecto con tu tienda.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📦</div>
         <h3>Seguimiento de pedidos</h3>
-        <p>Tus clientes pueden consultar el estado de su pedido directamente desde el chat, sin necesidad de contactarte.</p>
+        <p>Tus clientes consultan el estado de su pedido directo desde el chat.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
         <h3>Entrenado con tu catálogo</h3>
-        <p>El asistente conoce tus productos, precios, políticas de envío y todo lo que necesita para atender como vos lo harías.</p>
+        <p>Conoce tus productos, precios, envíos y todo lo necesario para atender como vos.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📱</div>
         <h3>Mobile friendly</h3>
-        <p>Funciona perfecto en celulares y tablets. El widget se adapta a cualquier pantalla y se puede mover libremente.</p>
+        <p>Funciona perfecto en celulares. El widget se adapta y se puede mover libremente.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
         <h3>Instalación en minutos</h3>
-        <p>Solo pegás una línea de código y listo. Funciona con Tiendanube, Shopify, WooCommerce, Empretienda y más.</p>
+        <p>Una línea de código y listo. Compatible con Tiendanube, Shopify, WooCommerce y más.</p>
       </div>
     </div>
   </section>
+
   <section class="pricing" id="pricing">
     <div class="pricing-header">
       <h2>Un solo plan, todo incluido</h2>
-      <p>Sin sorpresas, sin letra chica. Pagás y tenés todo.</p>
+      <p>Sin sorpresas, sin letra chica</p>
     </div>
     <div class="pricing-card">
       <div class="pricing-badge">✨ Todo incluido</div>
       <div class="pricing-price">$50 <span>USD/mes</span></div>
       <div class="pricing-subtitle">Facturación mensual • Cancelá cuando quieras</div>
       <div class="pricing-features">
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Widget personalizado (colores y logo)</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Entrenamiento completo con tu catálogo</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Seguimiento de pedidos</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Conversaciones ilimitadas</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Soporte por email</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Configuración inicial incluida</span></div>
-        <div class="pricing-feature"><div class="pricing-check">✓</div><span>Actualizaciones gratis</span></div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Widget personalizado (colores y logo)</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Entrenamiento completo con tu catálogo</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Seguimiento de pedidos</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Conversaciones ilimitadas</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Soporte por email</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Configuración inicial incluida</div>
+        <div class="pricing-feature"><span class="pricing-check">✓</span> Actualizaciones gratis</div>
       </div>
       <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20contratar%20ChatEch" class="btn-primary" style="width:100%;display:block;">Empezar ahora</a>
     </div>
   </section>
+
   <section class="cta">
     <div class="cta-box">
       <h2>¿Listo para automatizar tu atención?</h2>
       <p>Configuramos todo por vos. En 24hs tu asistente está funcionando.</p>
-      <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch%20para%20mi%20tienda" class="btn-white">Contactar</a>
+      <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch" class="btn-white">Contactar</a>
     </div>
   </section>
+
   <footer>
     <p>© 2024 ChatEch · Hecho con ❤️ en Argentina · <a href="mailto:contacto.rfanalytics@gmail.com">contacto.rfanalytics@gmail.com</a></p>
   </footer>
-  <script>
-    const demoResponses={hola:'¡Hola! 👋 ¿En qué puedo ayudarte hoy?',precio:'Tenemos productos en distintos rangos de precio. ¿Qué estás buscando?',envio:'Hacemos envíos a todo el país. ¿A qué zona necesitás que te enviemos? 🚚',pedido:'¡Claro! Pasame tu número de pedido y te digo el estado al instante. 📦',horario:'Estamos atendidos 24/7 gracias al asistente virtual. El equipo humano responde en horario comercial. 😊',pago:'Aceptamos múltiples medios de pago. ¿Querés que te cuente las opciones?',producto:'Tenemos un catálogo variado. ¿Qué tipo de producto te interesa?',stock:'Consultame por el producto que te interesa y te confirmo disponibilidad.',cambio:'Tenemos política de cambios y devoluciones. ¿Necesitás hacer uno?',default:'¡Gracias por tu mensaje! ¿Hay algo más en lo que pueda ayudarte?'};function sendDemoMessage(){const input=document.getElementById('demo-input');const messages=document.getElementById('demo-messages');const text=input.value.trim().toLowerCase();if(!text)return;const userMsg=document.createElement('div');userMsg.className='demo-message user';userMsg.textContent=input.value;messages.appendChild(userMsg);input.value='';setTimeout(()=>{const botMsg=document.createElement('div');botMsg.className='demo-message bot';let response=demoResponses.default;for(const[key,value]of Object.entries(demoResponses)){if(text.includes(key)){response=value;break}}botMsg.textContent=response;messages.appendChild(botMsg);messages.scrollTop=messages.scrollHeight},800);messages.scrollTop=messages.scrollHeight}document.getElementById('demo-input').addEventListener('keypress',(e)=>{if(e.key==='Enter')sendDemoMessage()});
-  </script>
 </body>
 </html>
