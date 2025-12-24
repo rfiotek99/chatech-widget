@@ -16,8 +16,8 @@
       "dest": "/public/widget.js"
     },
     {
-      "src": "/demo-(.*)",
-      "dest": "/public/demo-$1"
+      "src": "/demo.html",
+      "dest": "/public/demo.html"
     },
     {
       "src": "/landing.html",
@@ -26,6 +26,10 @@
     {
       "src": "/logos/(.*)",
       "dest": "/public/logos/$1"
+    },
+    {
+      "src": "/screenshots/(.*)",
+      "dest": "/public/screenshots/$1"
     },
     {
       "src": "/api/(.*)",
