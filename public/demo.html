@@ -6,14 +6,38 @@
   <title>Demo - ChatEch</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;min-height:100vh;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f0f23);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;color:#fff}.container{text-align:center;max-width:600px}.logo{font-size:32px;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}h1{font-size:28px;font-weight:700;margin-bottom:12px}p{color:#888;font-size:16px;margin-bottom:32px;line-height:1.6}.tips{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:24px;margin-bottom:32px;text-align:left}.tips h3{font-size:16px;margin-bottom:16px;color:#667eea}.tips ul{list-style:none;color:#aaa;font-size:14px}.tips li{padding:8px 0;padding-left:24px;position:relative}.tips li::before{content:'→';position:absolute;left:0;color:#667eea}.back{color:#667eea;text-decoration:none;font-size:14px}.back:hover{opacity:.8}.arrow{position:fixed;bottom:100px;right:100px;font-size:32px;animation:bounce 2s infinite}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}@media(max-width:768px){.arrow{bottom:90px;right:20px}}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;min-height:100vh;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f0f23);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;color:#fff}.container{text-align:center;max-width:650px}.logo{font-size:32px;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}h1{font-size:28px;font-weight:700;margin-bottom:12px}p{color:#888;font-size:16px;margin-bottom:24px;line-height:1.6}.custom-note{background:linear-gradient(135deg,rgba(102,126,234,.15),rgba(118,75,162,.15));border:1px solid rgba(102,126,234,.3);border-radius:12px;padding:20px;margin-bottom:28px;text-align:center}.custom-note h3{color:#667eea;font-size:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}.custom-note p{color:#ccc;font-size:15px;margin:0}.custom-icons{display:flex;justify-content:center;gap:24px;margin-top:16px}.custom-icon{text-align:center}.custom-icon span{font-size:28px;display:block;margin-bottom:6px}.custom-icon small{color:#888;font-size:11px}.tips{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:24px;margin-bottom:32px;text-align:left}.tips h3{font-size:16px;margin-bottom:16px;color:#667eea}.tips ul{list-style:none;color:#aaa;font-size:14px}.tips li{padding:8px 0;padding-left:24px;position:relative}.tips li::before{content:'→';position:absolute;left:0;color:#667eea}.back{color:#667eea;text-decoration:none;font-size:14px}.back:hover{opacity:.8}.cta-box{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:12px;padding:20px 30px;margin-top:24px;display:inline-block}.cta-box a{color:#fff;text-decoration:none;font-weight:600;font-size:15px}.arrow{position:fixed;bottom:100px;right:100px;font-size:32px;animation:bounce 2s infinite}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}@media(max-width:768px){.arrow{bottom:90px;right:20px}.custom-icons{gap:16px}}
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">ChatEch</div>
     <h1>Probá el asistente virtual</h1>
-    <p>Este es un ejemplo real de cómo funciona ChatEch. Hacé click en el botón de abajo a la derecha y empezá a chatear.</p>
+    <p>Hacé click en el botón de abajo a la derecha y chateá como lo harían tus clientes.</p>
+    
+    <div class="custom-note">
+      <h3>🎨 100% Personalizable</h3>
+      <p>Este es solo un ejemplo. Tu widget tendrá tu logo, tus colores y responderá sobre tus productos.</p>
+      <div class="custom-icons">
+        <div class="custom-icon">
+          <span>🖼️</span>
+          <small>Tu logo</small>
+        </div>
+        <div class="custom-icon">
+          <span>🎨</span>
+          <small>Tus colores</small>
+        </div>
+        <div class="custom-icon">
+          <span>📦</span>
+          <small>Tus productos</small>
+        </div>
+        <div class="custom-icon">
+          <span>💬</span>
+          <small>Tu estilo</small>
+        </div>
+      </div>
+    </div>
+
     <div class="tips">
       <h3>💡 Probá preguntar:</h3>
       <ul>
@@ -23,7 +47,12 @@
         <li>"¿Qué medios de pago aceptan?"</li>
       </ul>
     </div>
+
     <a href="/landing.html" class="back">← Volver a ChatEch</a>
+    
+    <div class="cta-box">
+      <a href="mailto:contacto.rfanalytics@gmail.com?subject=Quiero%20ChatEch%20para%20mi%20tienda">¿Te gustó? Contactanos →</a>
+    </div>
   </div>
   <div class="arrow">👇</div>
   <script src="https://chatech-widget.vercel.app/widget.js" data-client="demo"></script>
