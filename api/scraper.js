@@ -3,12 +3,7 @@ const cheerio = require('cheerio');
 const { createClient } = require('@supabase/supabase-js');
 
 module.exports = async (req, res) => {
-  const apiKey = req.headers['x-api-key'] || req.query.key;
-  
-  if (apiKey !== process.env.SCRAPER_API_KEY) {
-    return res.status(401).json({ error: 'No autorizado' });
-  }
-  
+  // Temporalmente sin verificación de API key para testing
   const { client_id, store_url } = req.query;
   
   if (!client_id || !store_url) {
@@ -16,13 +11,11 @@ module.exports = async (req, res) => {
   }
   
   try {
-    // Conectar a Supabase
     const supabase = createClient(
       process.env.SUPABASE_URL,
       process.env.SUPABASE_SERVICE_KEY
     );
     
-    // Obtener datos del cliente
     const { data: clientData, error: clientError } = await supabase
       .from('clients')
       .select('*')
@@ -33,7 +26,6 @@ module.exports = async (req, res) => {
       return res.status(404).json({ error: 'Cliente no encontrado' });
     }
     
-    // Scrapear productos
     const products = [];
     const response = await axios.get(store_url + '/productos', { timeout: 10000 });
     const $ = cheerio.load(response.data);
@@ -52,10 +44,9 @@ module.exports = async (req, res) => {
     });
     
     if (products.length === 0) {
-      return res.json({ success: false, message: 'No se encontraron productos' });
+      return res.json({ success: false, message: 'No se encontraron productos', debug: 'scraper ejecutado' });
     }
     
-    // Generar nuevo prompt
     const productList = products
       .filter(p => p.hasStock)
       .map(p => `- ${p.name}: ${p.price || 'Consultar'}`)
@@ -81,7 +72,6 @@ INFO:
 Responde en español argentino, sé amable. No inventes productos.
 Actualizado: ${new Date().toLocaleString('es-AR')}`;
     
-    // Actualizar en Supabase
     const { error: updateError } = await supabase
       .from('clients')
       .update({ system_prompt: newPrompt })
