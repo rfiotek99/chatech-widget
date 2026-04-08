@@ -165,40 +165,73 @@
             <label>Nombre *</label>
             <input type="text" name="nombre" required placeholder="Tu nombre">
           </div>
-          
+
           <div class="form-group">
             <label>Email *</label>
             <input type="email" name="email" required placeholder="tu@email.com">
           </div>
-          
+
           <div class="form-group">
-            <label>WhatsApp (opcional)</label>
-            <input type="tel" name="whatsapp" placeholder="+54 9 11 1234-5678">
+            <label>WhatsApp *</label>
+            <input type="tel" name="whatsapp" required placeholder="+54 9 11 1234-5678">
           </div>
-          
+
           <div class="form-group">
-            <label>URL de tu tienda *</label>
-            <input type="url" name="tienda" required placeholder="https://tutienda.com">
+            <label>Instagram de tu tienda *</label>
+            <input type="text" name="instagram" required placeholder="@tutienda">
           </div>
-          
+
           <div class="form-group">
-            <label>Plataforma</label>
-            <select name="plataforma">
+            <label>URL de tu tienda (si tenés)</label>
+            <input type="url" name="tienda" placeholder="https://tutienda.com">
+          </div>
+
+          <div class="form-group">
+            <label>Plataforma *</label>
+            <select name="plataforma" required>
               <option value="">Seleccioná una opción</option>
               <option value="Tiendanube">Tiendanube</option>
               <option value="Shopify">Shopify</option>
               <option value="WooCommerce">WooCommerce</option>
               <option value="Empretienda">Empretienda</option>
+              <option value="Wix">Wix</option>
+              <option value="Jumpseller">Jumpseller</option>
+              <option value="Solo Instagram">Solo Instagram (sin tienda web)</option>
               <option value="Otra">Otra</option>
             </select>
           </div>
-          
+
           <div class="form-group">
-            <label>¿Algo más que quieras contarnos?</label>
-            <textarea name="mensaje" placeholder="Contanos sobre tu tienda..."></textarea>
+            <label>¿Qué vendés? *</label>
+            <input type="text" name="productos" required placeholder="Ej: ropa femenina, zapatillas, accesorios...">
           </div>
-          
-          <button type="submit" class="form-submit">Enviar solicitud</button>
+
+          <div class="form-group">
+            <label>Horarios de atención</label>
+            <input type="text" name="horarios" placeholder="Ej: Lun-Vie 9am-6pm">
+          </div>
+
+          <div class="form-group">
+            <label>Medios de pago</label>
+            <input type="text" name="pagos" placeholder="Ej: Mercado Pago, transferencia, tarjetas">
+          </div>
+
+          <div class="form-group">
+            <label>Envíos</label>
+            <input type="text" name="envios" placeholder="Ej: Todo el país por Andreani, gratis en CABA">
+          </div>
+
+          <div class="form-group">
+            <label>Política de cambios y devoluciones</label>
+            <input type="text" name="cambios" placeholder="Ej: 15 días con etiqueta original">
+          </div>
+
+          <div class="form-group">
+            <label>¿Qué te preguntan más tus clientes?</label>
+            <textarea name="preguntas_frecuentes" placeholder="Ej: stock, talles disponibles, demora de envío..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Quiero mi ChatEch gratis 7 días 🚀</button>
         </form>
       </div>
       <div class="form-success" id="form-success">
